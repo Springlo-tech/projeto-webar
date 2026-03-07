@@ -1,41 +1,30 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-<model-viewer 
-  src="./modelos/filtro.glb" 
-  ios-src="./modelos/filtro.usdz"
-  ar
-  ar-modes="webxr scene-viewer quick-look"
-  ar-scale="auto"
-  ar-placement="floor"
-  camera-controls
-  touch-action="pan-y"
-  poster="./imagens/target.png"
-  shadow-intensity="1"
-  alt="Um modelo 3D em realidade aumentada">
-  
-  <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 8px; border: 1px solid #ccc; position: absolute; top: 16px; right: 16px; padding: 12px; z-index: 999;">
-    👋 Ver na minha casa
-  </button>
-
-  <div id="ar-prompt">
-    <img src="https://modelviewer.dev/shared/assets/hand.png" alt="Guia de movimento da mão">
-  </div>
-</model-viewer>
-
 <style>
-  /* Garante que o visualizador ocupe um espaço visível */
+  /* Garante que o visualizador ocupe espaço na tela */
   model-viewer {
     width: 100%;
     height: 500px;
     background-color: #f0f0f0;
   }
-  
-  /* Esconde o botão se o dispositivo não suportar AR */
-  model-viewer:not([ar-status="not-present"]) #ar-button {
-    display: block;
-  }
-  
-  model-viewer[ar-status="not-present"] #ar-button {
-    display: none;
-  }
 </style>
+
+<model-viewer 
+  src="./modelos/filtro.glb" 
+  ios-src="./modelos/filtro.usdz"
+  poster="./imagens/target.png"
+  alt="Um modelo 3D de um filtro de água"
+  ar
+  ar-modes="webxr scene-viewer quick-look"
+  camera-controls
+  auto-rotate
+  shadow-intensity="1">
+  
+  <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 8px; border: 1px solid #ccc; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); padding: 12px 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    👋 Ver na minha casa (AR)
+  </button>
+
+  <div slot="ar-status" id="ar-status">
+    Colocando o objeto no seu espaço...
+  </div>
+</model-viewer>
