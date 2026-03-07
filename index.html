@@ -1,12 +1,31 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
 <style>
-  /* Garante que o visualizador ocupe espaço na tela */
-  model-viewer {
-    width: 100%;
-    height: 500px;
-    background-color: #f0f0f0;
-  }
+model-viewer {
+  width: 100%;
+  height: 500px;
+  background-color: #f0f0f0;
+}
+
+/* botão AR */
+#ar-button{
+  background-color:white;
+  border-radius:8px;
+  border:1px solid #ccc;
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 20px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  transition:0.2s;
+}
+
+#ar-button:hover{
+  background:#f5f5f5;
+}
 </style>
 
 <model-viewer 
@@ -14,23 +33,41 @@
   ios-src="./modelos/filtro.usdz"
   poster="./imagens/target.png"
   alt="Um modelo 3D de um filtro de água"
+
   ar
   ar-modes="webxr scene-viewer quick-look"
-  ar-scale="fixed" 
+  ar-scale="fixed"
   ar-placement="floor"
+
   scale="1 1 1"
+
   camera-controls
   auto-rotate
+  auto-rotate-delay="3000"
+
+  environment-image="neutral"
+
   shadow-intensity="1"
   shadow-softness="0.5"
-  >
-  
-  <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 8px; border: 1px solid #ccc; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); padding: 12px 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    👋 Ver na minha casa- versao8 (AR)
-  </button>
-  
 
-  <div slot="ar-status" id="ar-status">
-    Colocando o objeto no seu espaço...
-  </div>
+  exposure="1"
+
+  loading="eager"
+
+  min-camera-orbit="auto auto 0.5m"
+  max-camera-orbit="auto auto 2m"
+
+  camera-orbit="0deg 75deg 1.2m"
+  field-of-view="35deg"
+
+>
+
+<button slot="ar-button" id="ar-button">
+👋 Ver na minha casa (AR)
+</button>
+
+<div slot="ar-status">
+Colocando o objeto no seu espaço...
+</div>
+
 </model-viewer>
