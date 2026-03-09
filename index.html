@@ -30,7 +30,7 @@ model-viewer {
 
 <model-viewer 
   src="./modelos/filtro.glb" 
-  ios-src="./modelos/filtro.usdz"
+  
   poster="./imagens/target.png"
   alt="Um modelo 3D de um filtro de água"
 
@@ -38,28 +38,13 @@ model-viewer {
   ar-modes="webxr scene-viewer quick-look"
   ar-scale="fixed"
   ar-placement="floor"
-
-  scale="1 1 1"
-
+  environment-image="neutral"
   camera-controls
   auto-rotate
-  auto-rotate-delay="3000"
-
-  environment-image="neutral"
-
   shadow-intensity="1"
   shadow-softness="0.5"
-
   exposure="1"
-
-  loading="eager"
-
-  min-camera-orbit="auto auto 0.5m"
-  max-camera-orbit="auto auto 2m"
-
-  camera-orbit="0deg 75deg 1.2m"
-  field-of-view="35deg"
-
+  disable-zoom
 >
 
 <button slot="ar-button" id="ar-button">
